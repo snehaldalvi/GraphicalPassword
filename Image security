@@ -1,0 +1,81 @@
+Imports System.Data
+Imports System.Data.SqlClient
+Imports System.IO
+Imports System.Drawing.Imaging
+Public Class Form3
+    Dim connection As New SqlConnection("Server= MANALI\SQLEXPRESS; Database = USERAUTHDB; Integrated Security = true")
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
+        connection.Open()
+
+        If RadioButton1.Checked = True Then
+
+            Dim command As New SqlCommand("INSERT INTO IMAGE (USERID,IMAGE_LINK) VALUES (@USERID,@IM)", connection)
+            command.Parameters.Add("@USERID", SqlDbType.VarChar).Value = "1"
+            command.Parameters.Add("@IM", SqlDbType.VarChar).Value = "1"
+
+
+            If command.ExecuteNonQuery() = 1 Then
+                MsgBox("PATTERN SELECTED", MsgBoxStyle.Information, "PATTERN SELECTED")
+
+            Else
+                MsgBox("PATTERN NOT SELECTED", MsgBoxStyle.Information, "PATTERN NOT SELECTED")
+
+            End If
+
+        End If
+
+        If RadioButton2.Checked = True Then
+
+            Dim command As New SqlCommand("INSERT INTO IMAGE (USERID,IMAGE_LINK) VALUES (@USERID,@IM)", connection)
+            command.Parameters.Add("@USERID", SqlDbType.VarChar).Value = "1"
+            command.Parameters.Add("@IM", SqlDbType.VarChar).Value = "2"
+
+
+            If command.ExecuteNonQuery() = 1 Then
+                MsgBox("PATTERN SELECTED", MsgBoxStyle.Information, "PATTERN SELECTED")
+
+            Else
+                MsgBox("PATTERN NOT SELECTED", MsgBoxStyle.Information, "PATTERN NOT SELECTED")
+
+            End If
+
+        End If
+        If RadioButton3.Checked = True Then
+
+            Dim command As New SqlCommand("INSERT INTO IMAGE (USERID,IMAGE_LINK) VALUES (@USERID,@IM)", connection)
+            command.Parameters.Add("@USERID", SqlDbType.VarChar).Value = "1"
+            command.Parameters.Add("@IM", SqlDbType.VarChar).Value = "3"
+
+
+            If command.ExecuteNonQuery() = 1 Then
+                MsgBox("PATTERN SELECTED", MsgBoxStyle.Information, "PATTERN SELECTED")
+
+            Else
+                MsgBox("PATTERN NOT SELECTED", MsgBoxStyle.Information, "PATTERN NOT SELECTED")
+
+            End If
+
+        End If
+        '    Using (SqlConnection cmd = New SqlConnection(connectionString))
+        '{
+        'Using (SqlCommand cmd = New SqlCommand("INSERT INTO myTable (myImage) VALUES (@IM)", connection))
+        '    {
+        '    Byte[] imageData = File.ReadAllBytes(@"F:\Temp\Picture.jpg");
+        '    com.Parameters.AddWithValue("@IM", imageData);
+        '    com.ExecuteNonQuery();
+        '    }
+
+        '    End Using
+        '}
+        'End Using
+        connection.Close()
+    End Sub
+
+    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+End Class
+
+
+
